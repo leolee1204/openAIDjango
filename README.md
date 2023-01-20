@@ -28,7 +28,10 @@ fileName: 儲存檔案的名稱
 
 10.search photo url method get
 http://127.0.0.1:8000/api/openai-photo/list 
+11.圖片都存在於openAIDjango\mysite\media\artAI
 ```
+## 以下是找尋API-KEY and organization 流程圖示
+
 ### 1.openai web 
 ![](https://github.com/leolee1204/openAIDjango/blob/5c82ed0c931625170f17ff1b6467fd51d146c2c1/temp/step-1.jpg)
 
