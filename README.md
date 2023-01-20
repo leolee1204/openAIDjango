@@ -45,7 +45,7 @@ http://127.0.0.1:8000/api/openai-photo/list
 ![](https://github.com/leolee1204/openAIDjango/blob/5c82ed0c931625170f17ff1b6467fd51d146c2c1/temp/step-5.jpg)
 
 ### 6.create openPhoto
-![](https://github.com/leolee1204/openAIDjango/blob/5c82ed0c931625170f17ff1b6467fd51d146c2c1/temp/step-6.jpg)
+![](https://github.com/leolee1204/openAIDjango/blob/744f5cdc00311f338a3b4d43d566d19c24c43be1/temp/step-6.jpg)
 
 ### 7.openAIPhoto list
-![](https://github.com/leolee1204/openAIDjango/blob/5c82ed0c931625170f17ff1b6467fd51d146c2c1/temp/step-7.jpg)
+![](https://github.com/leolee1204/openAIDjango/blob/744f5cdc00311f338a3b4d43d566d19c24c43be1/temp/step-7.jpg)
