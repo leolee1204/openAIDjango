@@ -17,9 +17,11 @@ class OpenAIPhotoCreateAPIView(views.APIView):
         describe = request.data.get('describe')
         numbers = request.data.get('numbers')
         file_name = request.data.get('fileName')
+        organization = request.data.get('organization')
+        api_key = request.data.get('apiKey')
 
-        openai.organization = "insert your organization"
-        openai.api_key = "insert your API-KEY"
+        openai.organization = organization
+        openai.api_key = api_key
 
         response = openai.Image.create(
             prompt=describe,
@@ -43,7 +45,8 @@ class OpenAIPhotoCreateAPIView(views.APIView):
                     field_name=None,
                     name=f'{file_name}-{str(i)}.png',
                     content_type='image/png',
-                    size=input_image.size,
+                    #gcp need to change
+                    size=int(w*h),
                     charset=None
                 )
 

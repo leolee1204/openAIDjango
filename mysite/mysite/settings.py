@@ -104,12 +104,20 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'HOST': '127.0.0.1',
+            'HOST': 'host',
             'PORT': '3306',
+            'USER': 'user',
+            'PASSWORD': 'password',
             'NAME': 'mydb',
-            'USER': 'root',
-            'PASSWORD': 'root',
     },
+    # 'default': {
+    #         'ENGINE': 'django.db.backends.mysql',
+    #         'HOST': '127.0.0.1',
+    #         'PORT': '3306',
+    #         'USER': 'root',
+    #         'PASSWORD': 'root',
+    #         'NAME': 'mydb2',
+    # },
 
 }
 
@@ -140,12 +148,29 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
-MEDIA_URL = "/media/"
+# MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+# MEDIA_URL = "/media/"
+
+# getting credential
+from google.oauth2 import service_account
+
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    os.path.join(BASE_DIR, 'credential.json'),
+)
+#
+DEFAULT_FILE_STORAGE = 'mysite.gcloud.GoogleCloudMediaFileStorage'
+GS_PROJECT_ID = 'my-django-381313'
+GS_BUCKET_NAME = 'my-django-381313.appspot.com'
+MEDIA_ROOT = 'media/'
+MEDIA_URL = 'https://storage.googleapis.com/{}/'.format(GS_BUCKET_NAME)
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 import mimetypes
 
 mimetypes.add_type("text/css", ".css", True)
 mimetypes.add_type("text/javascript", ".js", True)
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
