@@ -1,3 +1,6 @@
+import mimetypes
+from google.oauth2 import service_account
+import dj_database_url
 from pathlib import Path
 import os
 
@@ -10,7 +13,7 @@ SECRET_KEY = 'django-insecure-3u@+u+l=8n4&u+0n14$k^q5b7**1a!&99_#0*o%fg=nv)k!-ls
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = ['*', ]
 
 # Application definition
 INSTALLED_APPS = [
@@ -36,7 +39,7 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
-  'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -44,7 +47,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 REST_FRAMEWORK = {
 
-    'DEFAULT_PERMISSION_CLASSES':(
+    'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.AllowAny',
     ),
 }
@@ -53,7 +56,7 @@ SITE_ID = 1
 
 # scoial account
 SOCIALACCOUNT_QUERY_EMAIL = True
-ACCOUNT_LOGOUT_ON_GET= True
+ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
 
@@ -78,7 +81,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -102,14 +105,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
-    'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'HOST': 'host',
-            'PORT': '3306',
-            'USER': 'user',
-            'PASSWORD': 'password',
-            'NAME': 'mydb',
-    },
+    'default': dj_database_url.parse('postgres://leo:yCrzrq7wv4kSg9ShWWPzqxmDGD8hmg1Z@dpg-chbi23u7avjcvo68a84g-a.singapore-postgres.render.com/mydb_lic7')
     # 'default': {
     #         'ENGINE': 'django.db.backends.mysql',
     #         'HOST': '127.0.0.1',
@@ -152,7 +148,6 @@ STATICFILES_DIRS = [
 # MEDIA_URL = "/media/"
 
 # getting credential
-from google.oauth2 import service_account
 
 GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
     os.path.join(BASE_DIR, 'credential.json'),
@@ -169,8 +164,6 @@ MEDIA_URL = 'https://storage.googleapis.com/{}/'.format(GS_BUCKET_NAME)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-import mimetypes
 
 mimetypes.add_type("text/css", ".css", True)
 mimetypes.add_type("text/javascript", ".js", True)
-
